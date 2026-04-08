@@ -156,8 +156,9 @@ def build_plot(events_path: Path = EVENTS_PATH, output_dir: Path = OUTPUT_DIR) -
     svg_path = output_dir / "probability_scale.svg"
     png_path = output_dir / "probability_scale.png"
     fig.tight_layout(rect=(0.08, 0.06, 0.98, 0.91))
-    fig.savefig(svg_path, bbox_inches="tight")
-    fig.savefig(png_path, dpi=180, bbox_inches="tight")
+    stable_metadata = {"Date": None}
+    fig.savefig(svg_path, bbox_inches="tight", metadata=stable_metadata)
+    fig.savefig(png_path, dpi=180, bbox_inches="tight", metadata=stable_metadata)
     plt.close(fig)
     return svg_path, png_path
 
