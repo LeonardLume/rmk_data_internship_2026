@@ -1,0 +1,46 @@
+{
+  "query": [
+    {
+      "code": "Sugu",
+      "selection": {
+        "filter": "item",
+        "values": [
+          "1",
+          "2",
+          "3"
+        ]
+      }
+    },
+    {
+      "code": "Elukoht",
+      "selection": {
+        "filter": "item",
+        "values": [
+          "00",
+          "37"
+        ]
+      }
+    },
+    {
+      "code": "Vanuserühm",
+      "selection": {
+        "filter": "all",
+        "values": [
+          "*"
+        ]
+      }
+    },
+    {
+      "code": "Aasta",
+      "selection": {
+        "filter": "top",
+        "values": [
+          "2"
+        ]
+      }
+    }
+  ],
+  "response": {
+    "format": "csv"
+  }
+}

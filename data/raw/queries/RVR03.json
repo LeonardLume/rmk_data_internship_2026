@@ -1,0 +1,52 @@
+{
+  "query": [
+    {
+      "code": "Aasta",
+      "selection": {
+        "filter": "top",
+        "values": [
+          "1"
+        ]
+      }
+    },
+    {
+      "code": "Vanuserühm",
+      "selection": {
+        "filter": "all",
+        "values": [
+          "*"
+        ]
+      }
+    },
+    {
+      "code": "Sugu",
+      "selection": {
+        "filter": "item",
+        "values": [
+          "1"
+        ]
+      }
+    },
+    {
+      "code": "Näitaja",
+      "selection": {
+        "filter": "all",
+        "values": [
+          "*"
+        ]
+      }
+    },
+    {
+      "code": "Rände liik",
+      "selection": {
+        "filter": "item",
+        "values": [
+          "2"
+        ]
+      }
+    }
+  ],
+  "response": {
+    "format": "csv"
+  }
+}

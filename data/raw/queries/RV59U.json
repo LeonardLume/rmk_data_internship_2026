@@ -1,0 +1,53 @@
+{
+  "query": [
+    {
+      "code": "Aasta",
+      "selection": {
+        "filter": "top",
+        "values": [
+          "1"
+        ]
+      }
+    },
+    {
+      "code": "Maakond",
+      "selection": {
+        "filter": "item",
+        "values": [
+          "1",
+          "37"
+        ]
+      }
+    },
+    {
+      "code": "Vanuserühm",
+      "selection": {
+        "filter": "all",
+        "values": [
+          "*"
+        ]
+      }
+    },
+    {
+      "code": "Sugu",
+      "selection": {
+        "filter": "item",
+        "values": [
+          "1"
+        ]
+      }
+    },
+    {
+      "code": "Perekonnaseis",
+      "selection": {
+        "filter": "item",
+        "values": [
+          "1"
+        ]
+      }
+    }
+  ],
+  "response": {
+    "format": "csv"
+  }
+}

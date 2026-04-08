@@ -1,0 +1,157 @@
+{
+  "title": "RV59U: DEATHS BY COUNTY, AGE GROUP, SEX AND MARITAL STATUS",
+  "variables": [
+    {
+      "code": "Aasta",
+      "text": "Year",
+      "values": [
+        "2017",
+        "2018",
+        "2019",
+        "2020",
+        "2021",
+        "2022",
+        "2023",
+        "2024"
+      ],
+      "valueTexts": [
+        "2017",
+        "2018",
+        "2019",
+        "2020",
+        "2021",
+        "2022",
+        "2023",
+        "2024"
+      ],
+      "time": true
+    },
+    {
+      "code": "Maakond",
+      "text": "County",
+      "values": [
+        "1",
+        "37",
+        "784",
+        "39",
+        "44",
+        "49",
+        "51",
+        "57",
+        "59",
+        "65",
+        "67",
+        "70",
+        "74",
+        "78",
+        "82",
+        "84",
+        "86",
+        "17"
+      ],
+      "valueTexts": [
+        "Kogu Eesti",
+        "Harju county",
+        "..Tallinn",
+        "Hiiu county",
+        "Ida-Viru county",
+        "Jõgeva county",
+        "Järva county",
+        "Lääne county",
+        "Lääne-Viru county",
+        "Põlva county",
+        "Pärnu county",
+        "Rapla county",
+        "Saare county",
+        "Tartu county",
+        "Valga county",
+        "Viljandi county",
+        "Võru county",
+        "Place of residence unknown"
+      ],
+      "elimination": true,
+      "map": "estomaak"
+    },
+    {
+      "code": "Vanuserühm",
+      "text": "Age group",
+      "values": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9",
+        "10",
+        "11",
+        "12",
+        "13",
+        "14",
+        "15",
+        "16",
+        "17",
+        "18"
+      ],
+      "valueTexts": [
+        "Age groups total",
+        "Under 15",
+        "15-19",
+        "20-24",
+        "25-29",
+        "30-34",
+        "35-39",
+        "40-44",
+        "45-49",
+        "50-54",
+        "55-59",
+        "60-64",
+        "65-69",
+        "70-74",
+        "75-79",
+        "80-84",
+        "85 and over",
+        "Age unknown"
+      ],
+      "elimination": true
+    },
+    {
+      "code": "Sugu",
+      "text": "Sex",
+      "values": [
+        "1",
+        "2",
+        "3"
+      ],
+      "valueTexts": [
+        "Mehed ja naised",
+        "Males",
+        "Females"
+      ],
+      "elimination": true
+    },
+    {
+      "code": "Perekonnaseis",
+      "text": "Marital status",
+      "values": [
+        "1",
+        "2",
+        "3",
+        "5",
+        "6",
+        "7"
+      ],
+      "valueTexts": [
+        "Total",
+        "Single",
+        "Married",
+        "Divorced",
+        "Widowed",
+        "Marital status unknown"
+      ],
+      "elimination": true
+    }
+  ]
+}

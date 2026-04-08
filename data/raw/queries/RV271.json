@@ -1,0 +1,43 @@
+{
+  "query": [
+    {
+      "code": "Aasta",
+      "selection": {
+        "filter": "top",
+        "values": [
+          "1"
+        ]
+      }
+    },
+    {
+      "code": "Abielu tüüp",
+      "selection": {
+        "filter": "item",
+        "values": [
+          "1"
+        ]
+      }
+    },
+    {
+      "code": "Vanuserühm",
+      "selection": {
+        "filter": "all",
+        "values": [
+          "*"
+        ]
+      }
+    },
+    {
+      "code": "Sugu",
+      "selection": {
+        "filter": "all",
+        "values": [
+          "*"
+        ]
+      }
+    }
+  ],
+  "response": {
+    "format": "csv"
+  }
+}

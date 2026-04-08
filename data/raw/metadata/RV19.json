@@ -1,0 +1,84 @@
+{
+  "title": "RV19: LIVE BIRTHS BY CHILD'S SEX AND BIRTH WEIGHT",
+  "variables": [
+    {
+      "code": "Aasta",
+      "text": "Year",
+      "values": [
+        "2015",
+        "2016",
+        "2017",
+        "2018",
+        "2019",
+        "2020",
+        "2021",
+        "2022",
+        "2023",
+        "2024"
+      ],
+      "valueTexts": [
+        "2015",
+        "2016",
+        "2017",
+        "2018",
+        "2019",
+        "2020",
+        "2021",
+        "2022",
+        "2023",
+        "2024"
+      ],
+      "time": true
+    },
+    {
+      "code": "Sünnikaal, grammi",
+      "text": "Child's birth weight, grams",
+      "values": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9",
+        "10",
+        "11",
+        "12",
+        "13"
+      ],
+      "valueTexts": [
+        "Total",
+        "Under 500",
+        "500-999",
+        "1000-1499",
+        "1500-1999",
+        "2000-2499",
+        "2500-2999",
+        "3000-3499",
+        "3500-3999",
+        "4000-4499",
+        "4500-4999",
+        "5000 and over",
+        "Birth weight unknown"
+      ],
+      "elimination": true
+    },
+    {
+      "code": "Sugu",
+      "text": "Sex",
+      "values": [
+        "1",
+        "2",
+        "3"
+      ],
+      "valueTexts": [
+        "Boys and girls",
+        "Boys",
+        "Girls"
+      ],
+      "elimination": true
+    }
+  ]
+}

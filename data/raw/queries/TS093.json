@@ -1,0 +1,35 @@
+{
+  "query": [
+    {
+      "code": "Aasta",
+      "selection": {
+        "filter": "top",
+        "values": [
+          "1"
+        ]
+      }
+    },
+    {
+      "code": "Kuu",
+      "selection": {
+        "filter": "item",
+        "values": [
+          "00"
+        ]
+      }
+    },
+    {
+      "code": "Näitaja",
+      "selection": {
+        "filter": "item",
+        "values": [
+          "6",
+          "5"
+        ]
+      }
+    }
+  ],
+  "response": {
+    "format": "csv"
+  }
+}

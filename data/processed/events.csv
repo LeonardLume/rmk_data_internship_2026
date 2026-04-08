@@ -1,0 +1,13 @@
+event_id,event_label,category,estimate_type,year,numerator,denominator,probability,odds_1_in,notes
+birth_male,A randomly selected birth is male,births,exact_probability,2024,4933,9690,0.509082,1.96,From RV19 live births with total birth weight.
+resident_harju,A randomly selected resident lives in Harju county,population,exact_probability,2024,646315,1374687,0.470154,2.13,From RV0282U total population by place of residence.
+death_85_plus,A resident aged 85+ dies within one year,mortality,annual_probability,2024,5637,39395,0.143089,6.99,RV59U deaths aged 85+ divided by RV0282U population aged 85+.
+marriage_female_25_29,A randomly selected female aged 25-29 gets married within one year,marriages,annual_probability,2024,1325,34046,0.038918,25.7,RV271 marriages divided by RV0282U female population aged 25-29.
+immigration_20_24,A randomly selected resident aged 20-24 immigrates within one year,migration,annual_probability,2024,2166,66338,0.032651,30.63,External immigration from RVR03 divided by RV0282U population aged 20-24.
+immigration_25_29,A randomly selected resident aged 25-29 immigrates within one year,migration,annual_probability,2024,2235,69593,0.032115,31.14,External immigration from RVR03 divided by RV0282U population aged 25-29.
+marriage_male_30_34,A randomly selected male aged 30-34 gets married within one year,marriages,annual_probability,2024,1339,49838,0.026867,37.22,RV271 marriages divided by RV0282U male population aged 30-34.
+emigration_35_39,A randomly selected resident aged 35-39 emigrates within one year,migration,annual_probability,2024,2293,108061,0.021219,47.13,External emigration from RVR03 divided by RV0282U population aged 35-39.
+death_any,A randomly selected resident dies within one year,mortality,annual_probability,2024,15756,1374687,0.011462,87.25,Deaths from RV59U divided by total population from RV0282U.
+road_injury_equivalent,Annual injured persons in road accidents per resident,traffic,rate_equivalent,2024,2156,1374687,0.001568,637.61,"TS093 injured persons count per resident. This is a rate-based equivalent, not a unique-person probability."
+death_20_24,A resident aged 20-24 dies within one year,mortality,annual_probability,2024,36,66338,0.000543,1842.72,RV59U deaths aged 20-24 divided by RV0282U population aged 20-24.
+road_death_equivalent,Annual road-accident deaths per resident,traffic,rate_equivalent,2024,69,1374687,0.00005,19923,"TS093 persons killed count per resident. This is a rate-based equivalent, not a unique-person probability."

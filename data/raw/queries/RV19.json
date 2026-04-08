@@ -1,0 +1,34 @@
+{
+  "query": [
+    {
+      "code": "Aasta",
+      "selection": {
+        "filter": "top",
+        "values": [
+          "1"
+        ]
+      }
+    },
+    {
+      "code": "Sünnikaal, grammi",
+      "selection": {
+        "filter": "item",
+        "values": [
+          "1"
+        ]
+      }
+    },
+    {
+      "code": "Sugu",
+      "selection": {
+        "filter": "all",
+        "values": [
+          "*"
+        ]
+      }
+    }
+  ],
+  "response": {
+    "format": "csv"
+  }
+}
