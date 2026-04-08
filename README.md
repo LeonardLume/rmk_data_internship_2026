@@ -14,7 +14,7 @@ The main outputs are:
 
 - `data/processed/events.csv` - machine-readable event table
 - `outputs/probability_scale.png` - shareable preview image
-- `outputs/probability_scale.svg` - publication-friendly vector graphic
+- `outputs/probability_scale.svg` - generated vector export when the plotting step is run
 
 ## Repository Structure
 

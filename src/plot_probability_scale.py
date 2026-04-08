@@ -73,6 +73,7 @@ def build_plot(events_path: Path = EVENTS_PATH, output_dir: Path = OUTPUT_DIR) -
             "axes.facecolor": "#FAF7F0",
             "figure.facecolor": "#FAF7F0",
             "axes.edgecolor": "#2F2F2F",
+            "svg.hashsalt": "rmk-estonian-probability-scale",
         }
     )
 
