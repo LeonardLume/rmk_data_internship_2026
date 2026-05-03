@@ -16,10 +16,10 @@ real Estonian data.
 
 Examples in the final table:
 
-- a randomly selected birth is male
-- a randomly selected resident lives in Harju county
-- a resident aged 85+ dies within one year
-- a female aged 25-29 gets married within one year
+- a birth is male
+- a resident lives in Harju county
+- a resident aged 85+ dies this year
+- a woman aged 25-29 gets married this year
 - annual road-accident deaths per resident
 
 ## Data
@@ -76,12 +76,3 @@ py -3 -m unittest discover -v
 - `outputs/probability_scale.png` - final chart preview
 - `src/` - cleaning, calculation and plotting code
 - `tests/` - small tests for query building and formatting
-
-## AI Use
-
-AI was used for coding and wording assistance. Event definitions, denominators
-and final outputs were manually reviewed.
-
-## License
-
-MIT. See [LICENSE](LICENSE).

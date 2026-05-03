@@ -22,7 +22,7 @@ from src.common import read_csv_rows
 EVENTS_PATH = PROJECT_ROOT / "data" / "processed" / "events.csv"
 OUTPUT_DIR = PROJECT_ROOT / "outputs"
 
-CATEGORY_COLORS = {
+TOPIC_COLORS = {
     "births": "#2A6F97",
     "population": "#6D9F71",
     "mortality": "#B56576",
@@ -74,6 +74,12 @@ def probability_tick_formatter(value: float, _pos: int) -> str:
 
 
 def build_plot(events_path: Path = EVENTS_PATH, output_dir: Path = OUTPUT_DIR) -> tuple[Path, Path]:
+    """Draw the final chart.
+
+    A log axis is doing most of the storytelling here: it lets a one-in-two
+    event and a one-in-twenty-thousand event live on the same page.
+    """
+
     rows = read_csv_rows(events_path)
     if not rows:
         raise ValueError("Events file is empty.")
@@ -108,7 +114,7 @@ def build_plot(events_path: Path = EVENTS_PATH, output_dir: Path = OUTPUT_DIR) -
 
     for row, y in zip(rows, y_positions, strict=False):
         probability = float(row["probability"])
-        color = CATEGORY_COLORS.get(row["category"], "#2F2F2F")
+        color = TOPIC_COLORS.get(row["category"], "#2F2F2F")
         marker = ESTIMATE_MARKERS.get(row["estimate_type"], "o")
         ax.hlines(y, x_min, probability, color=color, alpha=0.25, linewidth=2)
         ax.scatter(
@@ -139,18 +145,18 @@ def build_plot(events_path: Path = EVENTS_PATH, output_dir: Path = OUTPUT_DIR) -
     ax.set_yticks(y_positions)
     ax.set_yticklabels(labels, fontsize=11)
     for tick, row in zip(ax.get_yticklabels(), rows, strict=False):
-        tick.set_color(CATEGORY_COLORS.get(row["category"], "#2F2F2F"))
+        tick.set_color(TOPIC_COLORS.get(row["category"], "#2F2F2F"))
     ax.xaxis.set_major_formatter(FuncFormatter(probability_tick_formatter))
     ax.grid(axis="x", which="major", color="#2F2F2F", alpha=0.15, linewidth=1)
     ax.grid(axis="x", which="minor", color="#2F2F2F", alpha=0.06, linewidth=0.6)
     ax.tick_params(axis="y", length=0)
     ax.set_xlabel("Probability or annual rate-equivalent", fontsize=11, color="#2F2F2F")
-    ax.set_title("Probability Scale of Selected Events in Estonia", fontsize=22, loc="left", color="#2F2F2F", pad=22)
+    ax.set_title("How likely is it? Selected events in Estonia", fontsize=22, loc="left", color="#2F2F2F", pad=22)
 
     fig.text(
         0.125,
         0.93,
-        f"{year_label} event estimates from Statistics Estonia. Colors show topic; marker shapes show estimate type.",
+        f"{year_label} estimates from Statistics Estonia. Color shows topic; shape shows how to read the estimate.",
         fontsize=10,
         color="#4F4F4F",
     )
