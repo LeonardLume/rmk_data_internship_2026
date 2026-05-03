@@ -111,14 +111,14 @@ lifetime risks.
 | Column | Meaning |
 |---|---|
 | `event_id` | Stable machine-readable event name |
-| `event_label` | Human-readable event description |
+| `event_label` | readable event description |
 | `category` | Topic group |
 | `estimate_type` | How the estimate should be interpreted |
 | `year` | Analysis year |
 | `numerator` | Event count or subgroup count |
 | `denominator` | Reference population/group |
 | `probability` | Numerator divided by denominator |
-| `odds_1_in` | Human-readable reciprocal of probability |
+| `odds_1_in` | readable reciprocal of probability |
 | `notes` | Source and interpretation notes |
 
 ## Main files
