@@ -44,12 +44,33 @@ ESTIMATE_LABELS = {
 }
 
 
+def format_percent(value: float) -> str:
+    """Format probabilities so rare events are not rounded out of existence."""
+    percent = value * 100
+    if percent >= 10:
+        return f"{percent:.2f}%"
+    if percent >= 1:
+        return f"{percent:.2f}%"
+    if percent >= 0.1:
+        return f"{percent:.3f}%"
+    if percent >= 0.01:
+        return f"{percent:.3f}%"
+    if percent >= 0.001:
+        return f"{percent:.4f}%"
+    return f"{percent:.1e}%"
+
+
 def probability_tick_formatter(value: float, _pos: int) -> str:
-    if value >= 0.01:
-        return f"{value * 100:.0f}%"
-    if value >= 0.001:
-        return f"{value * 100:.1f}%"
-    return f"{value * 100:.2f}%"
+    percent = value * 100
+    if percent >= 1:
+        return f"{percent:.0f}%"
+    if percent >= 0.1:
+        return f"{percent:.1f}%"
+    if percent >= 0.01:
+        return f"{percent:.2f}%"
+    if percent >= 0.001:
+        return f"{percent:.3f}%"
+    return f"{percent:.1e}%"
 
 
 def build_plot(events_path: Path = EVENTS_PATH, output_dir: Path = OUTPUT_DIR) -> tuple[Path, Path]:
@@ -58,6 +79,12 @@ def build_plot(events_path: Path = EVENTS_PATH, output_dir: Path = OUTPUT_DIR) -
         raise ValueError("Events file is empty.")
 
     rows.sort(key=lambda row: float(row["probability"]), reverse=True)
+    event_years = sorted({int(row["year"]) for row in rows})
+    year_label = (
+        str(event_years[0])
+        if len(event_years) == 1
+        else f"{event_years[0]}-{event_years[-1]}"
+    )
     probabilities = [float(row["probability"]) for row in rows]
     labels = [row["event_label"] for row in rows]
     y_positions = list(range(len(rows), 0, -1))
@@ -94,7 +121,7 @@ def build_plot(events_path: Path = EVENTS_PATH, output_dir: Path = OUTPUT_DIR) -
             linewidth=1.5,
             zorder=3,
         )
-        percent_label = f"{probability * 100:.2f}%"
+        percent_label = format_percent(probability)
         odds_label = f"1 in {row['odds_1_in']}"
         ax.text(
             probability * 1.12,
@@ -123,7 +150,7 @@ def build_plot(events_path: Path = EVENTS_PATH, output_dir: Path = OUTPUT_DIR) -
     fig.text(
         0.125,
         0.93,
-        "2024 event estimates from Statistics Estonia. Colors show topic; marker shapes show estimate type.",
+        f"{year_label} event estimates from Statistics Estonia. Colors show topic; marker shapes show estimate type.",
         fontsize=10,
         color="#4F4F4F",
     )

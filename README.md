@@ -18,6 +18,9 @@ The main outputs are:
 
 ## Repository Structure
 
+- `docs/data_sources.md` - source notes, trust assumptions, and data caveats
+- `docs/methodology.md` - event definitions, denominator choices, and Bayesian note
+- `docs/submission_notes.md` - reviewer-facing design choices and limitations
 - `scripts/stat_ee.py` - CLI for API metadata search and curated raw fetches
 - `stat_ee/pipeline.py` - PxWeb client, query builder, retry logic, curated table specs
 - `src/run_pipeline.py` - one-command runner for the full pipeline
@@ -79,6 +82,12 @@ If you already have raw files locally and want to skip the live API step:
 py -3 src/run_pipeline.py --skip-fetch
 ```
 
+Run tests:
+
+```powershell
+py -3 -m unittest discover -v
+```
+
 Step-by-step flow:
 
 1. Fetch raw metadata and curated CSV extracts:
@@ -132,6 +141,9 @@ Raw outputs are written to `data/raw/`:
 The HTTP client retries `429 Too Many Requests` and transient 5xx responses
 with exponential backoff.
 
+The committed raw layer was refreshed against the live API on 2026-05-03. The
+latest common year across the curated tables was still 2024.
+
 ## Clean Layer
 
 `src/clean_raw.py` reads raw CSV files with `encoding="utf-8-sig"` to avoid
@@ -164,8 +176,8 @@ The current chart includes 12 events:
 - resident lives in Harju county
 - resident aged 85+ dies within one year
 - female aged 25-29 gets married within one year
-- resident aged 20-24 immigrates within one year
-- resident aged 25-29 immigrates within one year
+- external immigration per resident aged 20-24
+- external immigration per resident aged 25-29
 - male aged 30-34 gets married within one year
 - resident aged 35-39 emigrates within one year
 - resident dies within one year
@@ -194,6 +206,8 @@ Example rows from `events.csv`:
   resident-year rate equivalent based on injured-person counts.
 - Road-accident deaths are handled the same way: a count-based annual rate
   equivalent, not a unique-person probability.
+- Immigration is an inflow rate divided by the matching age-group population,
+  not a probability that an existing resident immigrates.
 - Marriage probabilities are calculated from marriage counts divided by the
   matching population subgroup. They are useful annual odds, not lifetime odds.
 - The current event set is intentionally curated rather than exhaustive.
@@ -225,12 +239,12 @@ Approximate annual probabilities based on counts over population:
 - `death_20_24`
 - `marriage_female_25_29`
 - `marriage_male_30_34`
-- `immigration_20_24`
-- `immigration_25_29`
 - `emigration_35_39`
 
 Rate-based equivalent rather than a strict person-level probability:
 
+- `immigration_20_24`
+- `immigration_25_29`
 - `road_injury_equivalent`
 - `road_death_equivalent`
 

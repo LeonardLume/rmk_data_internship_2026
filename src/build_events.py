@@ -36,13 +36,6 @@ def matching_rows(rows: list[dict[str, str]], **criteria: object) -> list[dict[s
     ]
 
 
-def latest_year(rows: list[dict[str, str]], **criteria: object) -> int:
-    matches = matching_rows(rows, **criteria)
-    if not matches:
-        raise ValueError(f"No rows matched criteria: {criteria}")
-    return max(int(row["year"]) for row in matches)
-
-
 def latest_common_year(*year_sets: set[int]) -> int:
     common = set.intersection(*year_sets)
     if not common:
@@ -270,23 +263,23 @@ def build_events(clean_dir: Path = CLEAN_DIR, output_path: Path = OUTPUT_PATH) -
         ),
         EventDefinition(
             event_id="immigration_20_24",
-            event_label="A randomly selected resident aged 20-24 immigrates within one year",
+            event_label="Annual external immigration per resident aged 20-24",
             category="migration",
-            estimate_type="annual_probability",
+            estimate_type="rate_equivalent",
             year=analysis_year,
             numerator=migration_value(migration, year=analysis_year, metric="immigration", age_group="20-24"),
             denominator=population_value(population, year=analysis_year, age_group="20-24"),
-            notes="External immigration from RVR03 divided by RV0282U population aged 20-24.",
+            notes="External immigration from RVR03 divided by RV0282U population aged 20-24. This is an inflow rate, not a resident-level probability.",
         ),
         EventDefinition(
             event_id="immigration_25_29",
-            event_label="A randomly selected resident aged 25-29 immigrates within one year",
+            event_label="Annual external immigration per resident aged 25-29",
             category="migration",
-            estimate_type="annual_probability",
+            estimate_type="rate_equivalent",
             year=analysis_year,
             numerator=migration_value(migration, year=analysis_year, metric="immigration", age_group="25-29"),
             denominator=population_value(population, year=analysis_year, age_group="25-29"),
-            notes="External immigration from RVR03 divided by RV0282U population aged 25-29.",
+            notes="External immigration from RVR03 divided by RV0282U population aged 25-29. This is an inflow rate, not a resident-level probability.",
         ),
         EventDefinition(
             event_id="marriage_male_30_34",
