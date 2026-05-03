@@ -17,7 +17,7 @@ import matplotlib.pyplot as plt
 from matplotlib.lines import Line2D
 from matplotlib.ticker import FuncFormatter
 
-from src.common import read_csv_rows
+from src.common import format_odds_label, read_csv_rows
 
 EVENTS_PATH = PROJECT_ROOT / "data" / "processed" / "events.csv"
 OUTPUT_DIR = PROJECT_ROOT / "outputs"
@@ -71,6 +71,18 @@ def probability_tick_formatter(value: float, _pos: int) -> str:
     if percent >= 0.001:
         return f"{percent:.3f}%"
     return f"{percent:.1e}%"
+
+
+def odds_label_for_row(row: dict[str, str], probability: float) -> str:
+    """Prefer the event table label, but keep old numeric CSVs readable."""
+
+    raw = row.get("odds_1_in", "").strip()
+    if not raw:
+        return format_odds_label(1 / probability)
+    try:
+        return format_odds_label(float(raw.replace(",", "")))
+    except ValueError:
+        return raw
 
 
 def build_plot(events_path: Path = EVENTS_PATH, output_dir: Path = OUTPUT_DIR) -> tuple[Path, Path]:
@@ -128,7 +140,7 @@ def build_plot(events_path: Path = EVENTS_PATH, output_dir: Path = OUTPUT_DIR) -
             zorder=3,
         )
         percent_label = format_percent(probability)
-        odds_label = f"1 in {row['odds_1_in']}"
+        odds_label = odds_label_for_row(row, probability)
         ax.text(
             probability * 1.12,
             y,

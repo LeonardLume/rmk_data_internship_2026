@@ -37,6 +37,19 @@ def format_float(value: float, *, digits: int = 2) -> str:
     return f"{value:.{digits}f}".rstrip("0").rstrip(".")
 
 
+def format_odds_label(value: float) -> str:
+    """Turn a reciprocal probability into a label a person would actually read."""
+
+    if value < 3:
+        return f"about 1 in {value:.0f}"
+    if value < 10:
+        rounded = f"{value:.1f}".rstrip("0").rstrip(".")
+        return f"about 1 in {rounded}"
+    if value < 1000:
+        return f"about 1 in {value:.0f}"
+    return f"about 1 in {value:,.0f}"
+
+
 def read_csv_rows(path: Path) -> list[dict[str, str]]:
     with path.open("r", encoding=UTF8_SIG, newline="") as handle:
         return list(csv.DictReader(handle))

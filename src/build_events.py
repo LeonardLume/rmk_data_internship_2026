@@ -9,7 +9,7 @@ PROJECT_ROOT = Path(__file__).resolve().parents[1]
 if str(PROJECT_ROOT) not in sys.path:
     sys.path.insert(0, str(PROJECT_ROOT))
 
-from src.common import format_float, format_probability, parse_int, read_csv_rows, write_csv_rows
+from src.common import format_odds_label, format_probability, parse_int, read_csv_rows, write_csv_rows
 
 CLEAN_DIR = PROJECT_ROOT / "data" / "processed" / "clean"
 OUTPUT_PATH = PROJECT_ROOT / "data" / "processed" / "events.csv"
@@ -56,7 +56,7 @@ class Event:
             "numerator": self.numerator,
             "denominator": self.denominator,
             "probability": format_probability(probability),
-            "odds_1_in": format_float(1 / probability),
+            "odds_1_in": format_odds_label(1 / probability),
             "notes": self.notes,
         }
 
@@ -251,7 +251,7 @@ def build_events(clean_dir: Path = CLEAN_DIR, output_path: Path = OUTPUT_PATH) -
             year=analysis_year,
             numerator=deaths_value(deaths, year=analysis_year, age_group="85_plus"),
             denominator=population_value(population, year=analysis_year, age_group="85_plus"),
-            notes="RV59U deaths aged 85+ divided by RV0282U population aged 85+.",
+            notes="Approximation using RV59U annual deaths aged 85+ and same-year RV0282U population stock aged 85+.",
         ),
         Event(
             event_id="marriage_female_25_29",
@@ -261,7 +261,7 @@ def build_events(clean_dir: Path = CLEAN_DIR, output_path: Path = OUTPUT_PATH) -
             year=analysis_year,
             numerator=marriages_value(marriages, year=analysis_year, sex="female", age_group="25-29"),
             denominator=population_value(population, year=analysis_year, sex="female", age_group="25-29"),
-            notes="RV271 female marriages divided by RV0282U female population aged 25-29.",
+            notes="RV271 newly married women divided by same-year RV0282U resident population; an annual rate approximation.",
         ),
         Event(
             event_id="immigration_20_24",
@@ -291,7 +291,7 @@ def build_events(clean_dir: Path = CLEAN_DIR, output_path: Path = OUTPUT_PATH) -
             year=analysis_year,
             numerator=marriages_value(marriages, year=analysis_year, sex="male", age_group="30-34"),
             denominator=population_value(population, year=analysis_year, sex="male", age_group="30-34"),
-            notes="RV271 male marriages divided by RV0282U male population aged 30-34.",
+            notes="RV271 newly married men divided by same-year RV0282U resident population; an annual rate approximation.",
         ),
         Event(
             event_id="emigration_35_39",
@@ -331,7 +331,7 @@ def build_events(clean_dir: Path = CLEAN_DIR, output_path: Path = OUTPUT_PATH) -
             year=analysis_year,
             numerator=deaths_value(deaths, year=analysis_year, age_group="20-24"),
             denominator=population_value(population, year=analysis_year, age_group="20-24"),
-            notes="RV59U deaths aged 20-24 divided by RV0282U population aged 20-24.",
+            notes="Approximation using RV59U annual deaths aged 20-24 and same-year RV0282U population stock aged 20-24.",
         ),
         Event(
             event_id="road_death_equivalent",

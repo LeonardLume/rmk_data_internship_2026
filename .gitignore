@@ -2,6 +2,11 @@ __pycache__/
 *.py[cod]
 .venv/
 .pytest_cache/
-data/processed/
-outputs/
 _reference_zip/
+
+data/processed/*
+!data/processed/events.csv
+
+outputs/*
+!outputs/probability_scale.png
+!outputs/probability_scale.svg
